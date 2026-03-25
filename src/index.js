@@ -2,7 +2,10 @@ import fs from 'fs';
 import { addTask } from "./cli/addTask.js";
 import { updateTask } from "./cli/updateTask.js";
 import { removeTask } from "./cli/removeTask.js";
-import { listTasks } from "./cli/listTasks.js";
+import { 
+  listTasks,
+  listTasksDone
+} from "./cli/listTasks.js";
 import { 
   markDone,
   markInProgress
@@ -37,7 +40,7 @@ rl.on('line', (line) => {
   }
 
   //For listing tasks.
-  if(command === 'list'){
+  if(command === 'list' && arg1 === undefined){
     listTasks();
   }
 
@@ -47,6 +50,10 @@ rl.on('line', (line) => {
 
   if(command === 'mark-in-progress'){
     markInProgress(arg1);
+  }
+
+  if(command === 'list' && arg1 === 'done'){
+    listTasksDone();
   }
 
 
