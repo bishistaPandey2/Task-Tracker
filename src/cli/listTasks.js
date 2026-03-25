@@ -15,7 +15,6 @@ const listTasks = () => {
   return true;
 }
 
-
 const listTasksDone = () => {
   let tasks = [];
 
@@ -32,7 +31,7 @@ const listTasksDone = () => {
   return true;
 }
 
-const listTasksInProgress= () => {
+const listTasksInProgress = () => {
   let tasks = [];
 
   if(fs.existsSync('../todo.json')){
@@ -48,8 +47,28 @@ const listTasksInProgress= () => {
   return true;
 }
 
+
+const listTasksTodo = () => {
+  let tasks = [];
+
+  if(fs.existsSync('../todo.json')){
+    const data = fs.readFileSync('../todo.json', 'utf8');
+    if(data != undefined){
+      tasks = JSON.parse(data)
+    }
+  }
+
+  const doneTasks = tasks.filter((item) => item.status === 'todo');
+
+  console.log(doneTasks)
+  return true;
+}
+
+
+
 export{
   listTasks,
   listTasksDone,
-  listTasksInProgress
+  listTasksInProgress,
+  listTasksTodo
 };

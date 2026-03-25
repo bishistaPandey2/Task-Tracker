@@ -5,7 +5,8 @@ import { removeTask } from "./cli/removeTask.js";
 import { 
   listTasks,
   listTasksDone,
-  listTasksInProgress
+  listTasksInProgress,
+  listTasksTodo
 } from "./cli/listTasks.js";
 import { 
   markDone,
@@ -59,6 +60,10 @@ rl.on('line', (line) => {
 
   if(command === 'list' && arg1 === 'in-progress'){
     listTasksInProgress();
+  }
+
+  if(command === 'list' && arg1 === 'todo'){
+    listTasksTodo();
   }
 
 
