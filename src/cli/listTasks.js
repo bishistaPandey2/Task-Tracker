@@ -26,21 +26,30 @@ const listTasksDone = () => {
     }
   }
 
-  // let doneTasks = [];
-  // tasks.forEach(element => {
-  //   if(element.status === 'done'){
-  //     doneTasks.push(element);
-  //   }
-  // });
-
   const doneTasks = tasks.filter((item) => item.status === 'done');
 
   console.log(doneTasks)
   return true;
 }
 
+const listTasksInProgress= () => {
+  let tasks = [];
+
+  if(fs.existsSync('../todo.json')){
+    const data = fs.readFileSync('../todo.json', 'utf8');
+    if(data != undefined){
+      tasks = JSON.parse(data)
+    }
+  }
+
+  const doneTasks = tasks.filter((item) => item.status === 'in-progress');
+
+  console.log(doneTasks)
+  return true;
+}
 
 export{
   listTasks,
-  listTasksDone
+  listTasksDone,
+  listTasksInProgress
 };

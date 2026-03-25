@@ -4,7 +4,8 @@ import { updateTask } from "./cli/updateTask.js";
 import { removeTask } from "./cli/removeTask.js";
 import { 
   listTasks,
-  listTasksDone
+  listTasksDone,
+  listTasksInProgress
 } from "./cli/listTasks.js";
 import { 
   markDone,
@@ -55,6 +56,11 @@ rl.on('line', (line) => {
   if(command === 'list' && arg1 === 'done'){
     listTasksDone();
   }
+
+  if(command === 'list' && arg1 === 'in-progress'){
+    listTasksInProgress();
+  }
+
 
 
   rl.prompt();
