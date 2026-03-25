@@ -3,7 +3,8 @@ import { addTask } from "./cli/addTask.js";
 import { updateTask } from "./cli/updateTask.js";
 import { removeTask } from "./cli/removeTask.js";
 import { listTasks } from "./cli/listTasks.js";
-import { markDone, 
+import { 
+  markDone,
   markInProgress
 } from "./cli/markTask.js";
 import readline from 'readline';
@@ -43,6 +44,11 @@ rl.on('line', (line) => {
   if(command === 'mark-done'){
     markDone(arg1);
   }
+
+  if(command === 'mark-in-progress'){
+    markInProgress(arg1);
+  }
+
 
   rl.prompt();
 }).on('close', () => {
