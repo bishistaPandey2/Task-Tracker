@@ -10,7 +10,8 @@ import {
 } from "./cli/listTasks.js";
 import { 
   markDone,
-  markInProgress
+  markInProgress,
+  markTodo
 } from "./cli/markTask.js";
 import readline from 'readline';
 
@@ -52,6 +53,10 @@ rl.on('line', (line) => {
 
   if(command === 'mark-in-progress'){
     markInProgress(arg1);
+  }
+
+  if(command === 'mark-todo'){
+    markTodo(arg1);
   }
 
   if(command === 'list' && arg1 === 'done'){
